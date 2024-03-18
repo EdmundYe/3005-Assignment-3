@@ -6,10 +6,18 @@ import java.util.Scanner;
 
 public class main{
     public static void main(String [] args){
+        // database credentials
         String url = "jdbc:postgresql://localhost:5432/assignment3";
         String user = "postgres";
         String password = "postgres";
 
+        /*
+        Menu and user input
+        1 : gets student data from database
+        2 : prompts user to input data for new student
+        3 : prompts user to update a student's email based on id
+        4 : prompts user to delete student based on id
+         */
         while (true){
             System.out.println("1. Get all students");
             System.out.println("2. Add a student");
@@ -57,6 +65,8 @@ public class main{
         }
     }
     static void getAllStudents(String url, String user, String password){
+        // connects to database and performs select operation
+        // close connections at the end
         try{
             Class.forName("org.postgresql.Driver");
             Connection conn = DriverManager.getConnection(url, user, password);
@@ -85,6 +95,8 @@ public class main{
     }
 
     static void addStudent(String url, String user, String password, String first_name, String last_name, String email, String enrollment_date){
+        // connects to database and performs insert operation using user input
+        // close connections at the end
         try{
             Class.forName("org.postgresql.Driver");
             Connection conn = DriverManager.getConnection(url, user, password);
@@ -105,6 +117,8 @@ public class main{
     }
 
     static void updateStudentEmail(String url, String user, String password, int student_id, String new_email){
+        // connect to database and perform update operation
+        // close connection at the end
         try{
             Class.forName("org.postgresql.Driver");
             Connection conn = DriverManager.getConnection(url, user, password);
@@ -125,6 +139,8 @@ public class main{
     }
 
     static void deleteStudent(String url, String user, String password, int student_id){
+        // connect to database and perform delete operation
+        // close connection at the end
         try{
             Class.forName("org.postgresql.Driver");
             Connection conn = DriverManager.getConnection(url, user, password);
